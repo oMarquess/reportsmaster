@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+{% load static%}
+{% block content %}
+
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>KFT - Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active"><a href="{% url 'kft' %}" > Back </a></li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              
+              <h2>{{kft.name}}</h2>
+              <br>
+              <h3>{{kft.age}} yrs, {{ kft.sex }}</h3>
+              
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Update</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-delete">Delete</button>
+                </li>
+
+ 
+
+              </ul>
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <h5 class="card-title">About</h5>
+                  <p class="small fst-italic">Please do confirm the entered values before you proceed to print.</p>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Submission Date</div>
+                    <div class="col-lg-9 col-md-8">{{kft.date}}</div>
+                  </div>
+                  <h5 class="card-title">Details</h5>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Unique Report ID</div>
+                    <div class="col-lg-9 col-md-8">{{ kft.report_id }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">sodium</div>
+                    <div class="col-lg-9 col-md-8">{{kft.sodium}}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">potassium</div>
+                    <div class="col-lg-9 col-md-8">{{kft.potassium}}</div>
+                  </div>
+
+                   <div class="row">
+                    <div class="col-lg-3 col-md-4 label">creatinine</div>
+                    <div class="col-lg-9 col-md-8">{{kft.creatinine}}</div>
+                  </div>
+
+                   <div class="row">
+                    <div class="col-lg-3 col-md-4 label">urea</div>
+                    <div class="col-lg-9 col-md-8">{{kft.creatinine}}</div>
+                  </div>
+
+                  
+                    <div class="text-center">
+                      <a href = "" class="btn btn-primary m-4">Print</a>
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
+                  <!-- Profile Edit Form -->
+                  <form action = "" method = "POST">
+                  {% csrf_token %}
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="name" type="text" class="form-control" id="fullName" value="{{kft.name}}">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="sex" class="col-md-4 col-lg-3 col-form-label">Sex</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="sex" type="text" class="form-control" id="sex" value="{{kft.sex}}">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="age" class="col-md-4 col-lg-3 col-form-label">Age</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="age" type="text" class="form-control" id="age" value="{{kft.age}}">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="date" class="col-md-4 col-lg-3 col-form-label">Submission Date</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="date" type="date" class="form-control" id="date" value="{{kft.date}}" required>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="wbc" class="col-md-4 col-lg-3 col-form-label">sodium</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="sodium" type="text" class="form-control" id="sodium" value="{{kft.sodium}}">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="rbc" class="col-md-4 col-lg-3 col-form-label">potassium</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="potassium" type="text" class="form-control" id="potassium" value="{{kft.potassium}}">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="plt" class="col-md-4 col-lg-3 col-form-label">urea</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="urea" type="text" class="form-control" id="urea" value="{{kft.urea}}">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="hb" class="col-md-4 col-lg-3 col-form-label">creatinine</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="creatinine" type="text" class="form-control" id="creatinine" value="{{kft.creatinine}}">
+                      </div>
+                    </div>
+
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </form><!-- End Profile Edit Form -->
+
+                </div>
+
+                
+                <div class="tab-pane fade pt-3" id="profile-delete">
+
+                  <!-- Delete Form -->
+                    
+                    <div class="text-center">
+
+                    <h3 style="font-size:16px; font-weight: bold">Note. The entire KFT record in the clients name will be deleted permanently.</h3>
+
+                    </div>
+                 
+                    <div class="text-center">
+                       <div class="d-grid gap-2 mt-3">
+                       <a href="{% url 'delete_kft' kft.id %}" class="btn btn-danger">D - e - l - e - t - e</a>
+                      </div>
+                    </div>
+                  <!-- End settings Form -->
+
+                </div>
+                
+
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
+{% endblock content%}

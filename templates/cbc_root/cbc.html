@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+{% load static%}
+{% block content %}
+
+  <main id="main" class="main">
+
+
+    <section class="section">
+      <div class="row">
+        
+
+          <!-- Card with an image on left -->
+          <div class="card mb">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'assets/img/edta.jpg' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <br>
+              <br>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Complete Blood Count</h5>
+
+                   
+            
+              <!-- Disabled Backdrop Modal -->
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#disablebackdrop">
+                 + CBC Report
+              </button>
+              <div class="modal fade" id="disablebackdrop" tabindex="-1" data-bs-backdrop="false">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">CBC </h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      
+                      
+              <!-- Floating Labels Form -->
+              <form class="row g-3" method = "POST" action = "{% url 'cbc' %}">
+                 {% csrf_token %}
+                <div class="col-md-12">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingName" placeholder="Full Name" name='name' required>
+                    <label for="floatingName">Full Name</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Sex" name = 'sex' required>
+                      <option value = "trans" selected>Trans</option>
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>
+                    </select>
+                    <label for="floatingSelect">Sex</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingAge" placeholder="Age" name = 'age' required>
+                    <label for="floatingAge">Age</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="date" class="form-control" id="floatingDate" placeholder="Date" name = 'date' required>
+                    <label for="floatingDate">Submission date</label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="floatingRbc" placeholder="rbc" name = 'rbc' required>
+                      <label for="floatingRbc">rbc</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingWbc" placeholder="total wbc" name = 'wbc' required>
+                    <label for="floatingWbc">total wbc</label>
+                  </div>
+                </div>
+
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingHb" placeholder="hb" name = 'hb' required>
+                    <label for="floatingHb">hb</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingMch" placeholder="mch" name = 'mch' required>
+                    <label for="floatingMch">mch</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingMchc" placeholder="mchc" name = 'mchc' required>
+                    <label for="floatingMchc">mchc</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingPcv" placeholder="pcv" name = 'pcv' required>
+                    <label for="floatingPcv">pcv</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingPlt" placeholder="platelet" name = 'plt' required>
+                    <label for="floatingPlt">platelet</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingMcv" placeholder="mcv" name = 'mcv' required>
+                    <label for="floatingMcv">mcv</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingHct" placeholder="hct" name = 'hct' required>
+                    <label for="floatingHct">hct</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingRdw" placeholder="rdw" name = 'rdw' required>
+                    <label for="floatingRdw">rdw</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingLym" placeholder="lym" name = 'lym' required>
+                    <label for="floatingLym">lym</label>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-floating">
+                    <input type="text" class="form-control" id="floatingLym-p" placeholder="%" name = 'lym_p' required>
+                    <label for="floatingLym-p">%</label>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-warning">Reset</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+              </form><!-- End floating Labels Form -->
+              </div><!-- End Disabled Backdrop Modal-->
+
+            
+          </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Card with an image on left -->
+
+        
+
+        
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Trending CBC reports.</h5>
+
+              <!-- Table with hoverable rows -->
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Sex</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for cbc_list in cbc_lst reversed %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td><a href="{% url 'cbc-profile' cbc_list.id %}">{{cbc_list.name}}</a></td>
+                    <td>{{cbc_list.age}}</td>
+                    <td>{{cbc_list.sex}}</td>
+                    <td>{{cbc_list.date}}</td>                                                                                                                                
+                    <td><a href = "{% url 'cbc_report' cbc_list.id %}" class="btn btn-primary">Generate report</a></td>
+                    
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with hoverable rows -->
+
+            </div>
+          </div>
+
+        
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
+{% endblock content %}

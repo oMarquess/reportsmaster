@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static%}
+{% block content %}
+
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>LFT - Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active"><a href="{% url 'lft' %}" > Back </a></li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-12">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              
+              <h2>{{lft.name}}</h2>
+              <br>
+              <h3>{{lft.age}} yrs, {{ lft.sex }}</h3>
+              
+            </div>
+            <div class="text-center">
+            <form method="POST" action="">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit"> Confirm Delete</button>
+            </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
+{% endblock content%}
